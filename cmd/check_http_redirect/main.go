@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"net/http"
 	"net/url"
 	"strconv"
@@ -33,9 +32,6 @@ func main() {
 	}
 
 	source := p.OptRequiredString("url")
-
-	log.Printf("codes: %+v", codes)
-	log.Printf("urls: %+v", urls)
 
 	code, location, err := checkRedirect(httpClient(), source, codes, urls)
 	if err != nil {
