@@ -1,0 +1,20 @@
+language: go
+
+go:
+  - 1.11.x
+  - 1.10.x
+  - tip
+
+before_install:
+  - go get github.com/golang/lint/golint
+  - go get github.com/cheekybits/is
+  - go get github.com/hashicorp/go-cleanhttp
+  - go get github.com/jasonhancock/go-nagios
+  - go get github.com/pkg/errors
+
+before_script:
+  - go vet ./...
+  - golint -set_exit_status ./...
+
+script:
+  - go test -v ./...
